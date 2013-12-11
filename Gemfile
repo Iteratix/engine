@@ -5,7 +5,7 @@ source "https://rubygems.org"
 
 gemspec # Include gemspec dependencies
 
-gem 'mongoid-history' # History!
+gem 'mongoid-history'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.4'
