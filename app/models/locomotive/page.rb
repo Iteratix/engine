@@ -2,6 +2,11 @@ module Locomotive
   class Page
 
     include Locomotive::Mongoid::Document
+    include ::Mongoid::Timestamps
+
+    # history tracking all Page documents
+    # note: tracking will not work until #track_history is invoked
+    include ::Mongoid::History::Trackable
 
     MINIMAL_ATTRIBUTES = %w(_id title slug fullpath position depth published templatized target_klass_name redirect listed response_type parent_id parent_ids site_id created_at updated_at)
 
@@ -26,6 +31,15 @@ module Locomotive
     field :published,           type: Boolean, default: false
     field :cache_strategy,      default: 'none'
     field :response_type,       default: 'text/html'
+
+    # telling Mongoid::History how you want to track changes
+    track_history   :on => :all,       # track title and body fields only, default is :all
+                    :modifier_field => :modifier, # adds "belongs_to :modifier" to track who made the change, default is :modifier
+                    :modifier_field_inverse_of => :nil, # adds an ":inverse_of" option to the "belongs_to :modifier" relation, default is not set
+                    :version_field => :version,   # adds "field :version, :type => Integer" to track current version, default is :version
+                    :track_create   =>  true,    # track document creation, default is false
+                    :track_update   =>  true,     # track document updates, default is true
+                    :track_destroy  =>  true    # track document destruction, default is false
 
     ## associations ##
     belongs_to :site, class_name: 'Locomotive::Site', autosave: false
