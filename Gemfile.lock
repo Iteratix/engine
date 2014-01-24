@@ -26,6 +26,7 @@ PATH
       mimetype-fu (~> 0.1.2)
       mongo_session_store-rails3 (~> 4.1.1)
       mongoid (~> 3.1.5)
+      mongoid-history (~> 0.4.0)
       mongoid-tree (~> 1.0.3)
       mongoid_migration (~> 0.0.8)
       multi_json (~> 1.7.3)
@@ -183,7 +184,7 @@ GEM
       multi_json (~> 1.4)
       nokogiri (~> 1.5.2)
       oauth2
-    haml (4.0.4)
+    haml (4.0.5)
       tilt
     hashie (2.0.5)
     highline (1.6.20)
@@ -237,10 +238,10 @@ GEM
     mongoid-grid_fs (1.9.0)
       mime-types (~> 1.19)
       mongoid (~> 3.0)
-    mongoid-history (0.4.0)
+    mongoid-history (0.4.1)
       activesupport
       easy_diff
-      mongoid (~> 3.0)
+      mongoid (>= 3.0)
     mongoid-tree (1.0.4)
       mongoid (>= 3.0, <= 4.0)
     mongoid_migration (0.0.8)
@@ -327,6 +328,7 @@ GEM
     ruby-hmac (0.4.0)
     rubyzip (1.0.0)
     sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
       nokogiri (>= 1.4.4, < 1.6)
     sass (3.2.12)
     sass-rails (3.2.6)
